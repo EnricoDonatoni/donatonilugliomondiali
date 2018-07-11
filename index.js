@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 
 app.get("/ottieniSquadra", function(req, res){
 
-	var nomeSquadra = req.body.nomeSquadra;
+	var nomeSquadra = req.body.nomeSquadra || req.query.nomeSquadra;
 
 	console.log(nomeSquadra);
 
@@ -47,7 +47,7 @@ app.post("/inserisciSquadra", function(req, res){
 
 	var nomeSquadra = req.body.nomeSquadra || req.query.nomeSquadra;
 
-	nomeSquadra = parseString(nomeSquadra);
+	
 
 	console.log(nomeSquadra);
 
