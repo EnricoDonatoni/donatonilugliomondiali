@@ -1,8 +1,11 @@
+var util = require('util');
+var bodyParser = require('body-parser');
+
 exports.presenteMondiale = function(nome,squadre){
 
 	var i;
 	var presente = false;
-
+	
 	for (i=0; i<squadre.length; i++){
 
 		if(squadre[i].name == nome){

@@ -31,11 +31,9 @@ app.get("/ottieniSquadra", function(req, res){
 	var nomeSquadra = req.body.nomeSquadra || req.query.nomeSquadra;
 
 	console.log(nomeSquadra);
-
-	if(nomeSquadra === "undefined"){
-		console.log("Errore");
-			res.status(400).json({
-					errore: "Errore: errata tipologia di dato"
+	if (squadre[modulo.indiceSquadra(nomeSquadra)] == null){
+		res.status(400).json({
+					errore: "Errore: squadra non presente"
 				});
 	}
 	else{
@@ -43,18 +41,19 @@ app.get("/ottieniSquadra", function(req, res){
 	}
 });
 
+
 app.post("/inserisciSquadra", function(req, res){
 
 	var nomeSquadra = req.body.nomeSquadra || req.query.nomeSquadra;
 
-	
+
 
 	console.log(nomeSquadra);
 
-	if (squadre.length = maxSquadre){
+	if (squadre.length == maxSquadre){
 		console.log("Errore");
 			res.status(400).json({
-					errore: "Errore: errata tipologia di dato"
+					errore: "Errore: numero squadre massimo già raggiunto"
 				});
 	}
 	else if(nomeSquadra === "undefined"){
@@ -101,12 +100,12 @@ app.post("/inserisciRisultato", function(req, res){
 	else {
 		var matchuno = {
 		"opponent": nomeSquadraDue,
-		"outcome": result
+		"outcome": risultato
 	};
 		squadre[modulo.indiceSquadra(nomeSquadraUno)].matches.push(matchuno);
 		var matchdue = {
 		"opponent": nomeSquadraUno,
-		"outcome": result
+		"outcome": risultato
 	};
 		squadre[modulo.indiceSquadra(nomeSquadraDue)].matches.push(matchdue);
 
