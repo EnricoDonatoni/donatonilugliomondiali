@@ -1,0 +1,90 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: "trentose2jan12-astronauts"
+  description: A sample API to manage astronauts
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: Swagger API Team
+    email: foo@example.com
+    url: http://madskristensen.net
+  license:
+    name: MIT
+   swagger: "2.0"
+info:
+  version: 1.0.0
+  title: "donatonilugliomondiali"
+  description: A sample API to manage a mundial
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: Swagger API Team
+    email: foo@example.com
+    url: http://madskristensen.net
+  license:
+    name: MIT
+    url: http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
+host: petstore.swagger.io
+basePath: /api
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /ottieniSquadra/:
+    get:
+      description: Ritorna informazioni relative a una squadra.
+      operationId: getSquadra
+      parameters:
+        - nomeSquadra: 
+          in: path
+          description: Nome della squadra da cercare
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ritorna informazioni
+        400:
+          description: Squadra non presente
+
+  /inserisciSquadra/}:
+    post:
+      description: Aggiunge una squadra
+      operationId: addSquadra
+      parameters:
+        - nomeSquadra: 
+          in: body
+          description: Nome della squadra da aggiungere
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ritorna informazioni
+        400:
+          description: Squadra non presente
+  /inserisciRisultato/:
+    post:
+      description: Inserisce un risultato relativo a due squadre se non si sono già scontrate o se sono ancora presenti al mondiale.
+      operationId: addResult
+      parameters:
+      - nomeSquadraUno: 
+          in: body
+          description: Nome della prima squadra da matchare
+          required: true
+          type: string
+      - nomeSquadraDue: 
+          in: body
+          description: Nome della seconda squadra da matchare
+          required: true
+          type: string
+      - risultato:
+          in: body
+          description: risultato della partita tra SquadraUno e SquadraDue
+          required: true
+          type: string
+      responses:
+        200:
+          description: Ritorna informazioni
+        400:
+          description: Squadre già scontrate o che sono già uscite
